@@ -5,7 +5,7 @@ Playbooks are designed to be run on a fresh install of Ubuntu.
 The playbooks will update the system, install Docker, and then deploy the Docker WireGuard container.
 
 # Requirements
-
+- Ansible
 - Python 3.x
 
 # Bootstrap script
