@@ -5,13 +5,13 @@ import subprocess
 
 
 def run_command(command):
-    """
+    '''
     Run a command using subprocess.run and raise an exception
      if the command fails.
 
     Args:
         command (list): List containing the command and its arguments.
-    """
+    '''
     try:
         subprocess.run(command, check=True)
     except Exception as err:
@@ -19,13 +19,13 @@ def run_command(command):
 
 
 def run_ansible_playbook(variables):
-    """
+    '''
     Run an Ansible playbook with the specified variables.
 
     Args:
         variables (str): String containing the variables to pass to
          the Ansible playbook.
-    """
+    '''
     command = [
         'ansible-playbook',
         'main.yml',
@@ -44,7 +44,7 @@ def set_variables(
     udp_port,
     ssh_key_path,
 ):
-    """
+    '''
     Set variables for the Ansible playbook.
 
     Args:
@@ -58,7 +58,7 @@ def set_variables(
 
     Returns:
         str: String containing the formatted variables.
-    """
+    '''
     variables = {
         'USERNAME': username,
         'WG_SERVER_IP_ADDRESS': wg_server_ip,
@@ -73,12 +73,12 @@ def set_variables(
 
 
 def parse_args():
-    """
+    '''
     Parse command-line arguments using argparse.
 
     Returns:
         argparse.Namespace: Parsed arguments.
-    """
+    '''
     parser = argparse.ArgumentParser()
     parser.add_argument('--username', type=str, default='root')
     parser.add_argument('--server-ip', type=str, required=True)
@@ -91,9 +91,9 @@ def parse_args():
 
 
 def main():
-    """
+    '''
     Main function to parse arguments, set variables, and run the Ansible playbook.
-    """
+    '''
     args = parse_args()
 
     variables = set_variables(
