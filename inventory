@@ -1,0 +1,6 @@
+[wg_server]
+"{{ WG_SERVER_IP_ADDRESS }}"
+
+[wg_server:vars]
+ansible_user="{{ USERNAME }}"
+ansible_ssh_private_key_file="{{ WG_SERVER_SSH_KEY_PATH }}"

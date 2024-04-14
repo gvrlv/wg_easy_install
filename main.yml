@@ -1,0 +1,13 @@
+---
+- name: Setup the WireGuard server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update server and install essential packages
+      ansible.builtin.include_tasks: tasks/essential.yml
+    - name: Install docker
+      ansible.builtin.include_tasks: tasks/docker.yml
+    - name: Deploy docker apps
+      ansible.builtin.include_tasks: tasks/{{ item }}.yml
+      loop:
+        - wireguard

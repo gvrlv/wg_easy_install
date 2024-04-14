@@ -1,0 +1,37 @@
+---
+- name: Update apt packages
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+    upgrade: full
+- name: Install packages
+  ansible.builtin.package:
+    name:
+      - wget
+      - curl
+      - git
+      - python3
+      - python3-pip
+    state: present
+- name: Install pip packages
+  ansible.builtin.pip:
+    name:
+      - ansible
+      - docker
+    state: present
+- name: Create WireGuard directory
+  ansible.builtin.file:
+    path: "{{ DATA_DIR }}"
+    state: directory
+    owner: "{{ USERNAME }}"
+    group: "{{ USERNAME }}"
+    mode: "0755"
+- name: Create app directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ USERNAME }}"
+    group: "{{ USERNAME }}"
+    mode: "0755"
+  loop:
+    - "{{ DATA_DIR }}/wireguard"

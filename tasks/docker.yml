@@ -1,0 +1,39 @@
+---
+- name: Install Docker dependencies
+  ansible.builtin.package:
+    name:
+      - ca-certificates
+      - gnupg
+      - curl
+    state: present
+- name: Add Docker GPG key for apt
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+- name: Add Docker repository for apt
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+- name: Install Docker
+  ansible.builtin.package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+- name: Ensure Docker group exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+- name: Add user to Docker group
+  ansible.builtin.user:
+    name: "{{ USERNAME }}"
+    groups: docker
+    append: true
+- name: Enable and start Docker service
+  ansible.builtin.service:
+    name: docker
+    enabled: yes
+    state: started
