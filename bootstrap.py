@@ -4,7 +4,7 @@ import argparse
 import subprocess
 
 
-def run_command(command):
+def run_command(command: list) -> None:
     '''
     Run a command using subprocess.run and raise an exception
      if the command fails.
@@ -18,7 +18,7 @@ def run_command(command):
         raise ValueError(f'Can\'t run command: {err}')
 
 
-def run_ansible_playbook(variables):
+def run_ansible_playbook(variables: str) -> None:
     '''
     Run an Ansible playbook with the specified variables.
 
@@ -36,14 +36,14 @@ def run_ansible_playbook(variables):
 
 
 def set_variables(
-    username,
-    wg_server_ip,
-    wg_password,
-    data_dir,
-    tcp_port,
-    udp_port,
-    ssh_key_path,
-):
+    username: str,
+    wg_server_ip: str,
+    wg_password: str,
+    data_dir: str,
+    tcp_port: int,
+    udp_port: int,
+    ssh_key_path: str,
+) -> str:
     '''
     Set variables for the Ansible playbook.
 
@@ -72,7 +72,7 @@ def set_variables(
     return ' '.join(f"{key}='{value}'" for key, value in variables.items())
 
 
-def parse_args():
+def parse_args() -> argparse.Namespace:
     '''
     Parse command-line arguments using argparse.
 
@@ -90,7 +90,7 @@ def parse_args():
     return parser.parse_args()
 
 
-def main():
+def main() -> None:
     '''
     Main function to parse arguments, set variables, and run the Ansible playbook.
     '''
