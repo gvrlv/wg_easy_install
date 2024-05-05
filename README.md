@@ -4,11 +4,12 @@ Ansible playbooks to quickly setup a WireGuard via python `bootstrap.py` script.
 Playbooks are designed to be run on a fresh install of Ubuntu.
 The playbooks will update the system, install Docker, and then deploy the Docker WireGuard container.
 
-# Requirements
+## Requirements
+
 - Ansible
 - Python 3.x
 
-# Bootstrap script
+## Bootstrap script
 
 To use the `bootstrap.py` script, simply run it with the required command-line arguments:
 
