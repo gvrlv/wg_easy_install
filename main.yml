@@ -1,4 +1,3 @@
----
 - name: Setup the WireGuard server
   hosts: all
   become: yes
