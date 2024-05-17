@@ -69,7 +69,9 @@ def set_variables(
         'WG_SERVER_SSH_KEY_PATH': ssh_key_path,
     }
 
-    return ' '.join(f"{key}='{value}'" for key, value in variables.items())
+    return ' '.join(
+        f"{key}='{value}'" for key, value in variables.items()
+    )
 
 
 def parse_args() -> argparse.Namespace:
@@ -92,7 +94,8 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     '''
-    Main function to parse arguments, set variables, and run the Ansible playbook.
+    Main function to parse arguments, set variables, and run the
+     Ansible playbook.
     '''
     args = parse_args()
 

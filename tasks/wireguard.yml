@@ -14,7 +14,7 @@
       PASSWORD: "{{ WG_PASSWORD }}"
       WG_HOST: "{{ WG_SERVER_IP_ADDRESS }}"
     ports:
-      - "{{ WG_WEB_UDP_PORT }}:51821/udp"
+      - "{{ WG_WEB_UDP_PORT }}:51820/udp"
       - "{{ WG_WEB_TCP_PORT }}:51821/tcp"
     volumes:
       - /{{ USERNAME }}/{{ DATA_DIR }}/wireguard/config:/etc/wireguard
